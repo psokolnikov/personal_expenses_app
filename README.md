@@ -1,5 +1,7 @@
 # personal_expenses_app
 
+![image](https://user-images.githubusercontent.com/36627540/151588079-9198ed09-5b3b-4ae1-b956-9b5b633d663f.png)
+
 A new Flutter project.
 
 ## Getting Started
