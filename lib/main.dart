@@ -54,7 +54,7 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
   final List<Transaction> _userTransactions = [];
 
   bool _showChart = false;
@@ -83,6 +83,23 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _userTransactions.removeWhere((txn) => txn.id == id);
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance?.addObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    print(state);
+  }
+
+  @override
+  void dispose(){
+    super.dispose();
+    WidgetsBinding.instance?.removeObserver(this);
   }
 
   List<Widget> _buildLandscapeContent(MediaQueryData mediaQuery,
